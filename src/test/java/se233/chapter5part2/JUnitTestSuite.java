@@ -15,7 +15,6 @@ public class JUnitTestSuite {
         try {
             Platform.startup(() -> {});
         } catch (IllegalStateException ignored) {
-            // JavaFX platform already started in this JVM
         }
     }
 }
