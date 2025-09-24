@@ -21,7 +21,7 @@ public class Food {
         Point2D prev_position = this.position;
         do {
             this.position = new Point2D(rn.nextInt(GameStage.WIDTH), rn.nextInt(GameStage.HEIGHT));
-        } while (prev_position == this.position);
+        } while (prev_position.equals(this.position));
     }
     public Point2D getPosition() {
         return position;

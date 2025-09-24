@@ -7,7 +7,7 @@ import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
 
 @Suite
-@SelectClasses({GameLoopTest.class})
+@SelectClasses({GameLoopTest.class, FoodTest.class, SnakeTest.class})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class JUnitTestSuite {
     @BeforeAll
