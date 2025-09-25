@@ -65,6 +65,16 @@ public class GameLoopTest {
         assertNotSame(food.getPosition(), new Point2D(0, 1));
     }
 
+    @Test
+    public void testPreventReverseDirection() throws Exception {
+        ReflectionHelper.setField(snake, "direction", Direction.RIGHT);
+        ReflectionHelper.setField(gameStage, "key", KeyCode.LEFT);
+        ReflectionHelper.invokeMethod(gameLoop, "keyProcess", new Class<?>[0]);
+        assertEquals(Direction.RIGHT, ReflectionHelper.getField(snake, "direction"),
+                "Snake should not be able to reverse direction from RIGHT to LEFT");
+    }
+
+
    @Test
    public void collided_snakeHitBorder_shouldDie() throws Exception {
        ReflectionHelper.setField(gameStage, "key", KeyCode.LEFT);
@@ -96,11 +106,11 @@ public class GameLoopTest {
     }
 
     @Test
-    public void whenEaSpecialFood_scoreIncreasedByFive() throws Exception {
+    public void whenEatSpecialFood_scoreIncreasedByFive() throws Exception {
         ReflectionHelper.setField(snake, "direction", Direction.RIGHT);
         ReflectionHelper.setField(gameLoop, "score", 0);
         clockTickHelper();
-        assertEquals(ReflectionHelper.getField(gameLoop, "score"), 5, "score should be increased to 1 after eating normal food");
+        assertEquals(ReflectionHelper.getField(gameLoop, "score"), 5, "score should be increased to 5 after eating special food");
     }
 
 

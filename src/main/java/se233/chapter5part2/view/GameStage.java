@@ -15,6 +15,7 @@ public class GameStage extends Pane {
     public static final int WIDTH = 30;
     public static final int HEIGHT = 30;
     public static final int TILE_SIZE = 10;
+    private static final Color SPECIAL_FOOD_COLOR = Color.GREEN;
     private Canvas canvas;
     private HBox scoreBox;
     private Label scoreLbl;
@@ -43,7 +44,7 @@ public class GameStage extends Pane {
     public void render(Snake snake, Food food, Food specialFood) {
         render(snake, food);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.GREEN);
+        gc.setFill(SPECIAL_FOOD_COLOR);
         gc.fillRect(specialFood.getPosition().getX() * TILE_SIZE, specialFood.getPosition().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
     public KeyCode getKey() { return key; }
@@ -57,4 +58,5 @@ public class GameStage extends Pane {
         this.score = score;
         Platform.runLater(() -> scoreLbl.setText("Score: " + score));
     }
+
 }
